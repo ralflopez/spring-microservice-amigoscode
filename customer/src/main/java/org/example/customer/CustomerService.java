@@ -1,9 +1,17 @@
-package com.amigoscode.customer;
+package org.example.customer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CustomerService {
+
+    CustomerRepository customerRepository;
+
+    @Autowired
+    CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer = Customer.builder()
@@ -11,5 +19,6 @@ public class CustomerService {
                 .lastName(request.getLastName())
                 .email(request.getEmail())
                 .build();
+        customerRepository.save(customer);
     }
 }

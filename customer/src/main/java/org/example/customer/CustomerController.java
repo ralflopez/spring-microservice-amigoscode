@@ -1,4 +1,4 @@
-package com.amigoscode.customer;
+package org.example.customer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +20,10 @@ public class CustomerController {
     }
 
     @PostMapping
-    public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
+    public String registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
+        System.out.println("Hi");
         log.info("new customer registration {}", customerRegistrationRequest);
         customerService.registerCustomer(customerRegistrationRequest);
+        return "hii";
     }
 }
