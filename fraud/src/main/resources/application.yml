@@ -1,0 +1,15 @@
+server:
+  port: 9081
+
+spring:
+  application:
+    name: fraud
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fraud?createDatabaseIfNotExist=true
+    username: user
+    password: password
+    driverClassName: org.postgresql.Driver

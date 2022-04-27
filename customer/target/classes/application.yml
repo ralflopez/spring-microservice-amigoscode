@@ -7,7 +7,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/customer
+    url: jdbc:postgresql://localhost:5432/customer?createDatabaseIfNotExist=true
     username: user
     password: password
     driverClassName: org.postgresql.Driver
