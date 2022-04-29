@@ -1,6 +1,8 @@
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\CustomerApplication.java
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\CustomerRepository.java
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\CustomerRegistrationRequest.java
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\CustomerController.java
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\Customer.java
-C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\com\amigoscode\customer\CustomerService.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\FraudCheckResponse.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerApplication.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerController.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerRegistrationRequest.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\Customer.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerService.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerConfig.java
+C:\Users\Raul\IdeaProjects\kotlin\amigosservices\customer\src\main\java\org\example\customer\CustomerRepository.java
