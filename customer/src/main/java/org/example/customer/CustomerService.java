@@ -1,5 +1,7 @@
 package org.example.customer;
 
+import org.example.clients.notification.NotificationClient;
+import org.example.clients.notification.NotificationRequest;
 import org.example.clients.fraud.FraudCheckResponse;
 import org.example.clients.fraud.FraudClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +14,14 @@ public class CustomerService {
     private final CustomerRepository customerRepository;
     private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
+    private final NotificationClient notificationClient;
 
     @Autowired
-    CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient) {
+    CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient, NotificationClient notificationClient) {
         this.customerRepository = customerRepository;
         this.restTemplate = restTemplate;
         this.fraudClient = fraudClient;
+        this.notificationClient = notificationClient;
     }
 
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -38,6 +42,15 @@ public class CustomerService {
         if (fraudCheckResponse.getIsFraudster()) {
             throw new IllegalStateException("fraudster");
         }
+
+        // notification
+        notificationClient.sendNotification(
+                new NotificationRequest(
+                        customer.getId(),
+                        customer.getEmail(),
+                        String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName())
+                )
+        );
 
     }
 }

@@ -12,8 +12,8 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableFeignClients(
         basePackages = "org.example.clients"
 )
-@ComponentScan({ "org.example" })
-@EntityScan(basePackages = {"org.example"})
+//@ComponentScan({ "org.example" })
+//@EntityScan(basePackages = {"org.example"})
 public class CustomerApplication {
     public static void main(String[] args) {
         SpringApplication.run(CustomerApplication.class, args);
