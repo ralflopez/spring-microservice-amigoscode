@@ -1,5 +1,6 @@
 package org.example.customer;
 
+import org.example.amqp.RabbitMQMessageProducer;
 import org.example.clients.notification.NotificationClient;
 import org.example.clients.notification.NotificationRequest;
 import org.example.clients.fraud.FraudCheckResponse;
@@ -15,13 +16,15 @@ public class CustomerService {
     private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
     private final NotificationClient notificationClient;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     @Autowired
-    CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient, NotificationClient notificationClient) {
+    CustomerService(CustomerRepository customerRepository, RestTemplate restTemplate, FraudClient fraudClient, NotificationClient notificationClient, RabbitMQMessageProducer rabbitMQMessageProducer) {
         this.customerRepository = customerRepository;
         this.restTemplate = restTemplate;
         this.fraudClient = fraudClient;
         this.notificationClient = notificationClient;
+        this.rabbitMQMessageProducer = rabbitMQMessageProducer;
     }
 
     public void registerCustomer(CustomerRegistrationRequest request) {
@@ -44,12 +47,22 @@ public class CustomerService {
         }
 
         // notification
-        notificationClient.sendNotification(
-                new NotificationRequest(
+        NotificationRequest notificationRequest = new NotificationRequest(
                         customer.getId(),
                         customer.getEmail(),
                         String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName())
-                )
+        );
+//        notificationClient.sendNotification(
+//                new NotificationRequest(
+//                        customer.getId(),
+//                        customer.getEmail(),
+//                        String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName())
+//                )
+//        );
+        rabbitMQMessageProducer.publish(
+                notificationRequest,
+                "internal.exchange",
+                "internal.notification.routing-key"
         );
 
     }
